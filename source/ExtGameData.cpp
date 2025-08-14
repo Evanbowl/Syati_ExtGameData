@@ -2,7 +2,7 @@
 #include "ExtGameDataUtil.h"
 
 namespace {
-    GameDataHolder* extCreatChunks(GameDataHolder *pHolder) {
+    GameDataHolder* extCreateChunks(GameDataHolder *pHolder) {
         for (s32 i = 1; i < cExtSaveChunkCount; i++) {
             BinaryDataChunkBase *pChunk = cExtSaveChunkCreateTable[i]();
             sExtSaveChunkTable[i] = pChunk;
@@ -17,4 +17,4 @@ namespace {
 }
 
 kmWrite16(0x804D483A, 6 + cExtSaveChunkCount);
-kmBranch(0x804D48BC, extCreatChunks);
+kmBranch(0x804D48BC, extCreateChunks);
