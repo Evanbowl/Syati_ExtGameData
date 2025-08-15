@@ -6,7 +6,6 @@
 #include "Game/System/BinaryDataContentHeaderSerializer.h"
 
 {{IncludeList}}
-{{ChunkAccessList}}
 
 typedef BinaryDataChunkBase* (*ChunkCreationFunc)();
 

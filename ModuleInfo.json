@@ -9,8 +9,14 @@
   "ModuleExtensionDefinition": [
     {
       "Name": "NewSaveChunk",
-      "CodeGenSource": "GEN_ExtGameData.h",
-      "CodeGenDestination": "codebuild/ModuleData_ExtGameData.h",
+      "CodeGenTemplateSources": [
+        "GEN_ExtGameData.h",
+        "GEN_ExtGameDataUtil.h"
+      ],
+      "CodeGenTemplateDestinations": [
+        "codebuild/ModuleData_ExtGameData.h",
+        "codebuildexport/ModuleData_ExtGameDataUtil.h"
+      ],
       "Variables": [
         "SaveChunkEntry",
         "SaveChunkSignature",
