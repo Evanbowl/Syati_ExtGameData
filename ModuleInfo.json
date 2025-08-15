@@ -14,7 +14,7 @@
       "Variables": [
         "SaveChunkEntry",
         "SaveChunkSignature",
-        "IncludeEntry"
+        "Include"
       ],
       "CodeGenData": [
         {

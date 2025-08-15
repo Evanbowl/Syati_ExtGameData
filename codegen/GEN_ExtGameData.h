@@ -1,6 +1,7 @@
 #pragma once
 
 #include "syati.h"
+#include "ExtGameDataUtil.h"
 #include "Game/System/BinaryDataContentAccessor.h"
 #include "Game/System/BinaryDataContentHeaderSerializer.h"
 
@@ -21,6 +22,4 @@ namespace {
     };
 
     const s32 cExtSaveChunkCount = sizeof(cExtSaveChunkCreateTable) / sizeof(ChunkCreationFunc);
-    
-    static BinaryDataChunkBase* sExtSaveChunkTable[cExtSaveChunkCount];
 }
