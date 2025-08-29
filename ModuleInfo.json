@@ -9,31 +9,26 @@
   "ModuleExtensionDefinition": [
     {
       "Name": "NewSaveChunk",
-      "CodeGenTemplateSources": [
-        "GEN_ExtGameData.h",
-        "GEN_ExtGameDataUtil.h"
-      ],
-      "CodeGenTemplateDestinations": [
-        "codebuild/ModuleData_ExtGameData.h",
-        "codebuildexport/ModuleData_ExtGameDataUtil.h"
-      ],
+      "CodeGenSource": "GEN_ExtGameData.h",
+      "CodeGenDestination": "codebuildexport/ModuleData_ExtGameData.h",
       "Variables": [
-        "SaveChunkEntry",
-        "SaveChunkSignature",
+        "ChunkMemberType",
+        "ChunkMemberName",
+        "ChunkCreationFunc",
         "Include"
       ],
       "CodeGenData": [
         {
-          "ReplaceTargetName": "SaveChunkList",
-          "ReplaceFormatData": "{0},"
+          "ReplaceTargetName": "NewChunkCreateList",
+          "ReplaceFormatData": "{2},"
         },
         {
-          "ReplaceTargetName": "ChunkAccessList",
-          "ReplaceFormatData": "#define SAVE_CHUNK_{1} ExtGameDataUtil::getChunk('{1}')"
+          "ReplaceTargetName": "NewChunkMemberList",
+          "ReplaceFormatData": "{0}* {1};"
         },
         {
           "ReplaceTargetName": "IncludeList",
-          "ReplaceFormatData": "#include \"{2}\""
+          "ReplaceFormatData": "#include \"{3}\""
         }
       ]
     }

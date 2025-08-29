@@ -1,7 +1,8 @@
 #pragma once
 
 #include "syati.h"
+#include "ModuleData_ExtGameData.h"
 
 namespace ExtGameDataUtil {
-    BinaryDataChunkBase* getChunk(u32 signature);
+    ExtGameDataHolder* getCurrentGameDataHolder();
 }

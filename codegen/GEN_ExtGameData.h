@@ -1,15 +1,19 @@
 #pragma once
 
 #include "syati.h"
-#include "ExtGameDataUtil.h"
 #include "Game/System/BinaryDataContentAccessor.h"
 #include "Game/System/BinaryDataContentHeaderSerializer.h"
 
 {{IncludeList}}
 
-typedef BinaryDataChunkBase* (*ChunkCreationFunc)();
+class ExtGameDataHolder : public GameDataHolder {
+public:
+    {{NewChunkMemberList}}
+};
 
 namespace {
+    typedef BinaryDataChunkBase* (*ChunkCreationFunc)();
+
     template<typename T>
     BinaryDataChunkBase* createBinaryChunk() {
         return new T();
@@ -17,7 +21,7 @@ namespace {
 
     const ChunkCreationFunc cExtSaveChunkCreateTable[] = {
         NULL,
-        {{SaveChunkList}}
+        {{NewChunkCreateList}}
     };
 
     const s32 cExtSaveChunkCount = sizeof(cExtSaveChunkCreateTable) / sizeof(ChunkCreationFunc);
