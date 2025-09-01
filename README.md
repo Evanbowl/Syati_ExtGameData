@@ -47,11 +47,23 @@ To register this new chunk, you will need to add an entry to your `ModuleInfo.js
 ```json
 "NewSaveChunk": [
     {
-      "SaveChunkEntry": "createBinaryChunk<TestChunk>",
-      "SaveChunkSignature": "TEST",
-      "IncludeEntry": "TestChunk.h"
+      "ChunkMemberType": "TestChunk",
+      "ChunkMemberName": "mTestChunk",
+      "ChunkCreationFunc": "createBinaryChunk<TestChunk>",
+      "Include": "TestChunk.h"
     }
 ]
 ```
 
-Furthermore, you can add `Syati_ExtGameData_API` to your `ModuleDependancies` (typo intentional, please fix this hackio :D) and include `ModuleData_ExtGameDataUtil.h` to use an auto-generated macro to access this chunk from other places in your custom code.
+Furthermore, you can add `Syati_ExtGameData_API` to your `ModuleDependancies` (typo intentional, please fix this hackio :D) and include `ExtGameDataUtil.h` to access the current extended `GameDataHolder` instance. With this, you can make a simple utility function to easly access the custom chunk from anywhere:
+```c++
+TestChunk* getCurrentTestChunk() {
+    ExtGameDataHolder *pHolder = ExtGameDataUtil::getCurrentGameDataHolder();
+
+    if (pHolder) {
+        return pHolder->mTestChunk;
+    }
+
+    return NULL;
+}
+```
